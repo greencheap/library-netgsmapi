@@ -1,0 +1,19 @@
+{
+    "name": "senemco/netgsm-api",
+    "type": "library",
+    "require": {
+        "php-curl-class/php-curl-class": "^8.6",
+        "symfony/http-foundation": "^4.3"
+    },
+    "license": "MIT",
+    "authors": [{
+        "name": "senemco",
+        "email": "me@senem.co"
+    }],
+    "minimum-stability": "beta",
+    "autoload": {
+        "psr-4": {
+            "SenemCO\\": "src/"
+        }
+    }
+}
