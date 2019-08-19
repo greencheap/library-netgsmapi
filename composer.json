@@ -9,7 +9,7 @@
         "homepage": "https://senem.co",
         "email": "me@senem.co"
     }],
-    "minimum-stability": "beta",
+    "minimum-stability": "stable",
     "autoload": {
         "psr-4": {
             "SenemCO\\": "src/"
