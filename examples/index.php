@@ -3,7 +3,7 @@
 
     /***     
     $query = $netgsm->sms
-    ->numbers(['05422156201'])
+    ->numbers(['05000000'])
     ->messages('Bir xx sonra gelicek bu mesaj gönderim 18 geliş 19')
     ->send();
     * print_r($query);
@@ -14,7 +14,7 @@
      * print_r($query);
      */
 
-    // $query = $netgsm->sms->registerBlackList(false , ['05422156201']);
+    // $query = $netgsm->sms->registerBlackList(false , ['05000000']);
     //print_r($query);
     
     
