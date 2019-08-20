@@ -1,10 +1,6 @@
 {
     "name": "senemco/netgsm-api",
-<<<<<<< HEAD
     "version": "1.0.4",
-=======
-    "version": "1.0.3",
->>>>>>> 7effac14b4ce2bc38f2b1c46a6b0e90be7552538
     "type": "library",
     "require": {},
     "license": "MIT",
