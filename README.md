@@ -42,7 +42,7 @@ En çok rağbet görecek olan sınıf sms yapısıdır. Bir çok firma kullanıc
 #### SMS Nasıl Gönderilir
 
 	$sender = $netgsm->sms->messages('Gönderilecek metin')
-	->numbers( ['05000000000' , '05000000000'] )
+	->numbers( ['905000000000' , '905000000000'] )
 	->send();
 
 	var_dump($sender);
@@ -64,14 +64,26 @@ Bu işlem genelde Bddk izni nedeniyle oluşturulmuştur. Taciz maksatlı mesajla
 
 	$query = $netgsm->sms
 	->registerBlackList(true , [
-		'050000000000' , '050000000000' , '050000000000'
+		'905000000000' , '905000000000' , '905000000000'
 	])
 	echo $query // Dönen Değer OK! 
 
 Eğer kullanıcı karalisteye almak istiyorsanız, ilk parametre *true* olmalıdır. Eğer kişinin numarasını kara listeden çıkarmak istiyorsanız ilk parametre değeri *false* dönmesi gerekiyor.
 
 ### Sesli Mesaj
-**Geliştiriliyor** Pek Yakında!
+Müşterilerinize sesli dinamik mesajlar göndererek, onlara bilgiler sunabilirsiniz. Bu çok basit bir işlem ile gerçekleşmektedir. 
+
+	$query  =  $netgsm->voice
+	->messages([
+		'<text>İlk Sesli Mesajınız</text>',
+		'<audioid>123456</audioid>',
+		'<text>İkinci Mesajınız</text>'
+	])
+	->numbers(['905000000000' , '905000000000' , '905000000000'])
+	->send();
+  
+- `<text></text>` Bu etiket arasına yazılan metinler bir bot tarafından okunur.
+- `<audioid></audioid>` Bu etiket, netgsm paneli tarafından eklediğiniz ses dosyalarının idsini eklemenize ve arama esnasında bahsi geçen ses kaydının okunmasını sağlar.
 
 ## Geliştirme
 Sizde bu kütüphaneye destek olabilirsiniz. Kütüphaneyi beğendiğiniz takdir de lütfen STAR vererek beni mutlu etmeyi ihmal etmeyin. 
