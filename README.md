@@ -1,4 +1,4 @@
-![# Welcome to StackEdit!](https://res.cloudinary.com/senem-co/image/upload/v1566212823/Git/image_a5evmf.webp)
+![# Welcome to StackEdit!](https://res.cloudinary.com/senem-co/image/upload/v1566212823/Git/senemco.webp)
 
 Merhaba! Ben Yunus SENEM, kendi projelerim de kullanmak ve bunu insanlarla paylaşmak için **PHP 7.2** ile yazılmış *NETGSM* kütüphanesini paylaşmak istiyorum. Geliştirilmesi son sürat devam edecek bu kütüphaneyi ücretsiz olarak kullanabilir ve ticari paylaşım yapabilirsiniz. Buna göre lisans **MIT** olarak belirlenmiştir.
 
