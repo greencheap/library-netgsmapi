@@ -60,7 +60,7 @@ class Voice
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, "{$this->conf['api']}voicesms/send");
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 1);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: text/xml"));
