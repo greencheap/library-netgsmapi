@@ -1,17 +1,25 @@
 {
-    "name": "senemco/netgsm-api",
-    "version": "1.0.5",
+    "name": "greencheap/netgsmapi",
+    "version": "2.0.0-beta",
     "type": "library",
-    "require": {},
+    "require": {
+        "php": "^7.4",
+        "guzzlehttp/guzzle": "^7.0"
+    },
     "license": "MIT",
-    "authors": [{
-        "name": "senemco",
-        "homepage": "https://senem.co",
-        "email": "me@senem.co"
-    }],
+    "authors": [
+        {
+            "name": "GreenCheap",
+            "homepage": "https://greencheap.net",
+            "email": "support@greencheap.net"
+        }
+    ],
     "autoload": {
         "psr-4": {
-            "SenemCO\\": "src/"
+            "GreenCheap\\": "src/"
         }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.3"
     }
 }

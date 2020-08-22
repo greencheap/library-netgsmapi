@@ -2,7 +2,6 @@
 
 namespace SenemCO\Helpers;
 
-use Curl\Curl;
 use SenemCO\Libraries\Voice;
 use SenemCO\Libraries\Sms;
 
