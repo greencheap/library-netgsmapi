@@ -1,16 +1,11 @@
 {
-    "name": "greencheap/netgsmapi",
-    "version": "2.0.0-beta",
+    "name": "greencheap/library-netgsm",
+    "description": "NetGSM Api",
     "type": "library",
-    "require": {
-        "php": "^7.4",
-        "guzzlehttp/guzzle": "^7.0"
-    },
     "license": "MIT",
     "authors": [
         {
-            "name": "GreenCheap",
-            "homepage": "https://greencheap.net",
+            "name": "greencheap",
             "email": "support@greencheap.net"
         }
     ],
@@ -19,7 +14,10 @@
             "GreenCheap\\": "src/"
         }
     },
+    "require": {
+        "php-curl-class/php-curl-class": "^8.8"
+    },
     "require-dev": {
-        "phpunit/phpunit": "^9.3"
+        "phpunit/phpunit": "^9.4"
     }
 }
