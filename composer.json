@@ -1,12 +1,14 @@
 {
     "name": "greencheap/library-netgsm",
     "description": "NetGSM Api",
+    "version": "2.0.0-alpha",
     "type": "library",
     "license": "MIT",
     "authors": [
         {
             "name": "greencheap",
-            "email": "support@greencheap.net"
+            "email": "support@greencheap.net",
+            "homepage": "https://greencheap.net"
         }
     ],
     "autoload": {
@@ -15,7 +17,8 @@
         }
     },
     "require": {
-        "php-curl-class/php-curl-class": "^8.8"
+        "php-curl-class/php-curl-class": "^8.8",
+        "sabre/xml": "^2.2"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.4"

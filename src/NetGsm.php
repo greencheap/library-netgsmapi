@@ -10,17 +10,17 @@ class NetGsm
     /**
      * @var string
      */
-    protected string $id;
+    public string $id;
 
     /**
      * @var string
      */
-    protected string $password;
+    public string $password;
 
     /**
      * @var string
      */
-    protected string $name;
+    public string $name;
 
     /**
      * NetGSM constructor.
@@ -28,7 +28,7 @@ class NetGsm
      * @param string $password
      * @param string $name
      */
-    public function __construct(string $id, string $password, string $name = null)
+    public function __construct(string $id, string $password, string $name = '')
     {
         $this->id = $id;
         $this->password = $password;
@@ -38,20 +38,19 @@ class NetGsm
     /**
      * @return object
      */
-    public function initialize(): object
+    public function getInitialize(): object
     {
         return (object) [
-            'id' => $this->id,
+            'usercode' => $this->id,
             'password' => $this->password,
-            'name' => $this->name
+            'type' => '1:n',
+            'company' => [
+                'value' => 'Netgsm',
+                'attributes' => [
+                    'dil' => 'TR'
+                ]
+            ],
+            'msgheader' => $this->name ?: $this->id
         ];
-    }
-
-    /**
-     * @param string $date
-     */
-    public static function sendNow($date = 'now')
-    {
-
     }
 }

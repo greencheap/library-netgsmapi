@@ -2,41 +2,54 @@
 
 namespace GreenCheap\Components;
 
+use GreenCheap\NetGsm;
+use GreenCheap\Sender;
+use Sabre\Xml\Service;
+
 /**
  * Class SmsFoundation
  * @package GreenCheap\NetGSM\Components
  */
-class SmsFoundation
+class SmsFoundation extends Sender
 {
-    /**
-     * @var int|array
-     */
-    protected $numbers;
 
     /**
-     * @var string
+     * SmsFoundation constructor.
+     * @param NetGsm $netgsm
      */
-    protected string $content;
-
-    /**
-     * @param $numbers
-     * @return $this
-     */
-    public function setNumbers($numbers): self
+    public function __construct(NetGsm $netgsm)
     {
-        $this->numbers = $numbers;
-
-        return $this;
+        $this->setInitialize($netgsm->getInitialize());
     }
 
     /**
-     * @param $content
-     * @return $this
+     * @param array|string $numbers
+     * @param array|string $message
+     * @return object
      */
-    public function setContent($content): self
+    public function setMessage($numbers = '' , $message): object
     {
-        $this->content = $content;
+        if(is_string($numbers)){
+            $numbers = [$numbers];
+        }
 
-        return $this;
+        $phoneNumbers = [];
+        foreach($numbers as $number){
+            $phoneNumbers[] = [
+                'name' => 'no',
+                'value' => $number
+            ];
+        }
+
+        $service = new Service();
+        $xmlData = $service->write('mainbody', [
+            'header' => (array) $this->getInitialize(),
+            'body' => [
+                'msg' => '<![CDATA['.$message.']]>',
+                $phoneNumbers
+            ]
+        ]);
+
+        return $this->postXml('https://api.netgsm.com.tr/sms/send/xml' , $xmlData);
     }
 }
