@@ -53,12 +53,15 @@ class Sender
                 'message' => $curl->errorMessage
             ];
         } else {
-            preg_match('/[\w{2}]+/' , $curl->response , $code);
-            $code = $code[0];
+            preg_match('/([0-9{2}+]+)\s?([0-9]+)?/' , $curl->response , $code);
+
+            $messageId = isset($code[2]) ? $code[2] : 'Error';
+            $code = $code[1];
+
             return (object) [
                 'status' => $code != '00' && $code != '01' && $code != '02' ? 'error':'success',
                 'code' => $code,
-                'message' => $code != '00' && $code != '01' && $code != '02' ? 'An error has occurred during the sending process. Visit the GreenCheap Documentation.' : $curl->response
+                'message_id' => $code != '00' && $code != '01' && $code != '02' ? 'An error has occurred during the sending process. Visit the GreenCheap Documentation.' : $messageId
             ];
         }
     }

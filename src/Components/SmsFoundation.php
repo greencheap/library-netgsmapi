@@ -2,6 +2,7 @@
 
 namespace GreenCheap\Components;
 
+use Curl\Curl;
 use GreenCheap\NetGsm;
 use GreenCheap\Sender;
 use Sabre\Xml\Service;
@@ -27,7 +28,7 @@ class SmsFoundation extends Sender
      * @param array|string $message
      * @return object
      */
-    public function setMessage($numbers = '' , $message): object
+    public function sendMessage($numbers, $message): object
     {
         if(is_string($numbers)){
             $numbers = [$numbers];
@@ -52,4 +53,27 @@ class SmsFoundation extends Sender
 
         return $this->postXml('https://api.netgsm.com.tr/sms/send/xml' , $xmlData);
     }
+
+    /**
+     * @param $startdate
+     * @param $stopdate
+     * @return object
+     */
+    public function getMessages($startdate , $stopdate)
+    {
+        $initialize = $this->getInitialize();
+        $service = new Service();
+        $xmlData = $service->write('mainbody', [
+            'header' => [
+                'usercode' => $initialize->usercode,
+                'password' => $initialize->password,
+                'startdate' => '010720191000',
+                'stopdate' => '061220201000',
+                'type' => 0
+            ],
+        ]);
+
+        return $this->postXml('https://api.netgsm.com.tr/sms/receive' , $xmlData);
+    }
 }
+

@@ -8,6 +8,11 @@ namespace GreenCheap;
 class NetGsm
 {
     /**
+     * Hangi Dengesiz Böyle Bir Format Kullanır?
+     */
+    const DATETIME = 'dmYHi';
+
+    /**
      * @var string
      */
     public string $id;
