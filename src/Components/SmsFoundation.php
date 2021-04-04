@@ -1,10 +1,9 @@
 <?php
 
-namespace GreenCheap\Components;
+namespace GreenCheap\NetGsm\Components;
 
-use Curl\Curl;
-use GreenCheap\NetGsm;
-use GreenCheap\Sender;
+use GreenCheap\NetGsm\NetGsm;
+use GreenCheap\NetGsm\Sender;
 use Sabre\Xml\Service;
 
 /**
@@ -13,7 +12,6 @@ use Sabre\Xml\Service;
  */
 class SmsFoundation extends Sender
 {
-
     /**
      * SmsFoundation constructor.
      * @param NetGsm $netgsm
@@ -26,9 +24,9 @@ class SmsFoundation extends Sender
     /**
      * @param array|string $numbers
      * @param array|string $message
-     * @return object
+     * @return $this
      */
-    public function sendMessage($numbers, $message): object
+    public function sms($numbers, $message): SmsFoundation
     {
         if(is_string($numbers)){
             $numbers = [$numbers];
@@ -37,43 +35,44 @@ class SmsFoundation extends Sender
         $phoneNumbers = [];
         foreach($numbers as $number){
             $phoneNumbers[] = [
-                'name' => 'no',
-                'value' => $number
+                "name" => "no",
+                "value" => $number
             ];
         }
 
         $service = new Service();
-        $xmlData = $service->write('mainbody', [
-            'header' => (array) $this->getInitialize(),
-            'body' => [
-                'msg' => '<![CDATA['.$message.']]>',
+        $this->xmlData = $service->write("mainbody", [
+            "header" => (array) $this->getInitialize(),
+            "body" => [
+                "msg" => "<![CDATA[".$message."]]>",
                 $phoneNumbers
             ]
         ]);
-
-        return $this->postXml('https://api.netgsm.com.tr/sms/send/xml' , $xmlData);
+        $this->uri = "https://api.netgsm.com.tr/sms/send/xml";
+        return $this;
     }
 
     /**
-     * @param $startdate
-     * @param $stopdate
+     * @param $start
+     * @param $finish
      * @return object
+     * @deprecated
      */
-    public function getMessages($startdate , $stopdate)
+    public function messages($start , $finish): object
     {
         $initialize = $this->getInitialize();
         $service = new Service();
-        $xmlData = $service->write('mainbody', [
-            'header' => [
-                'usercode' => $initialize->usercode,
-                'password' => $initialize->password,
-                'startdate' => '010720191000',
-                'stopdate' => '061220201000',
-                'type' => 0
+        $this->xmlData = $service->write("mainbody", [
+            "header" => [
+                "usercode" => $initialize->usercode,
+                "password" => $initialize->password,
+                "startdate" => $start,
+                "stopdate" => $finish,
+                "type" => 0
             ],
         ]);
-
-        return $this->postXml('https://api.netgsm.com.tr/sms/receive' , $xmlData);
+        $this->uri = "https://api.netgsm.com.tr/sms/receive";
+        return $this;
     }
 }
 

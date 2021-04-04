@@ -1,5 +1,5 @@
 <?php
-namespace GreenCheap;
+namespace GreenCheap\NetGsm;
 
 /**
  * Class NetGSM
@@ -7,10 +7,7 @@ namespace GreenCheap;
  */
 class NetGsm
 {
-    /**
-     * Hangi Dengesiz Böyle Bir Format Kullanır?
-     */
-    const DATETIME = 'dmYHi';
+    const DATETIME = "dmYHi";
 
     /**
      * @var string
@@ -33,7 +30,7 @@ class NetGsm
      * @param string $password
      * @param string $name
      */
-    public function __construct(string $id, string $password, string $name = '')
+    public function __construct(string $id, string $password, string $name = "")
     {
         $this->id = $id;
         $this->password = $password;
@@ -46,16 +43,16 @@ class NetGsm
     public function getInitialize(): object
     {
         return (object) [
-            'usercode' => $this->id,
-            'password' => $this->password,
-            'type' => '1:n',
-            'company' => [
-                'value' => 'Netgsm',
-                'attributes' => [
-                    'dil' => 'TR'
+            "usercode" => $this->id,
+            "password" => $this->password,
+            "type" => "1:n",
+            "company" => [
+                "value" => "Netgsm",
+                "attributes" => [
+                    "dil" => "TR"
                 ]
             ],
-            'msgheader' => $this->name ?: $this->id
+            "msgheader" => $this->name ?: $this->id
         ];
     }
 }
