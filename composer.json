@@ -2,6 +2,12 @@
     "name": "greencheap/library-netgsm",
     "description": "NetGSM Api",
     "version": "2.0.4",
+    "keywords": [
+        "netgsm",
+        "api",
+        "php",
+        "symfony"
+    ],
     "type": "library",
     "license": "MIT",
     "authors": [
